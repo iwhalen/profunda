@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.venv
 env/
 build/
 develop-eggs/
@@ -23,6 +24,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+uv.lock
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -52,11 +54,38 @@ coverage.xml
 # Django stuff:
 *.log
 
-# Sphinx documentation
-docs/_build/
-
 # PyBuilder
 target/
 
 # gedit backup files
 *~
+
+# remove pycharm boilerplate files
+.idea
+
+# ipynb example stuff
+.ipynb_checkpoints/
+ipynb_tmp/
+*.parquet
+
+# mypy
+.mypy_cache/
+
+# playground
+/data/
+playground/
+.devcontainer/
+
+# build data
+examples/*/*.html
+examples/*/*.csv
+static/docs
+docsrc/_build/
+docsrc/source/pages/api/_autosummary/
+
+# User created
+VERSION
+version.py
+
+# local java/spark sdk environment files
+.sdkmanrc
