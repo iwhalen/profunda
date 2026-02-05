@@ -1,6 +1,7 @@
 """Organize the calculation of statistics for each series in this DataFrame."""
 
 from datetime import datetime
+from importlib.metadata import version
 from typing import Any, Dict, Optional, Union
 
 import pandas as pd
@@ -22,7 +23,8 @@ from profunda.model.summary import get_series_descriptions
 from profunda.model.table import get_table_stats
 from profunda.model.timeseries_index import get_time_index_description
 from profunda.utils.progress_bar import progress
-from profunda.version import __version__
+
+__version__ = version("profunda")
 
 
 def describe(

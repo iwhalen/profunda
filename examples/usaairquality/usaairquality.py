@@ -4,9 +4,9 @@ Time-series profiling example for USA AirQuality dataset
 
 import pandas as pd
 
-from ydata_profiling import ProfileReport
-from ydata_profiling.utils.cache import cache_file
-from ydata_profiling.visualisation.plot import timeseries_heatmap
+from profunda import ProfileReport
+from profunda.utils.cache import cache_file
+from profunda.visualisation.plot import timeseries_heatmap
 
 if __name__ == "__main__":
     file_name = cache_file(

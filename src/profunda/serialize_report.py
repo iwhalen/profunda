@@ -1,4 +1,5 @@
 import warnings
+from importlib.metadata import version
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional, Union
 
@@ -8,7 +9,8 @@ if TYPE_CHECKING:
 from profunda.config import Settings
 from profunda.model import BaseDescription
 from profunda.report.presentation.core import Root
-from profunda.version import __version__
+
+__version__ = version("profunda")
 
 
 class SerializeReport:

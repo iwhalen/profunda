@@ -7,6 +7,7 @@ import platform
 import subprocess
 import zipfile
 from datetime import datetime, timedelta
+from importlib.metadata import version
 
 # Image type detection
 from pathlib import Path
@@ -15,7 +16,7 @@ from typing import Mapping
 import pandas as pd
 import requests
 
-from profunda.version import __version__
+__version__ = version("profunda")
 
 
 def update(d: dict, u: Mapping) -> dict:

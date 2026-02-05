@@ -1,26 +1,23 @@
 import copy
 import json
 import warnings
+from dataclasses import asdict, is_dataclass
+from importlib.metadata import version
 from pathlib import Path
 from typing import Any, Optional, Union
 
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    import pkg_resources
-
-from dataclasses import asdict, is_dataclass
-
+import ibis
 import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
 from typeguard import typechecked
 from visions import VisionsTypeset
 
-from profunda.config import Config, IbisSettings, Settings, SparkSettings
+from profunda.config import Config, IbisSettings, Settings
 from profunda.expectations_report import ExpectationsReport
 from profunda.model import BaseDescription
 from profunda.model.alerts import AlertType
-from profunda.model.dataframe import ibisDataFrame, sparkDataFrame
+from profunda.model.dataframe import ibisDataFrame
 from profunda.model.describe import describe as describe_df
 from profunda.model.sample import Sample
 from profunda.model.summarizer import (
@@ -57,7 +54,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
 
     def __init__(
         self,
-        df: Optional[Union[pd.DataFrame, sparkDataFrame, ibisDataFrame]] = None,
+        df: Optional[Union[pd.DataFrame, ibisDataFrame]] = None,
         minimal: bool = False,
         tsmode: bool = False,
         sortby: Optional[str] = None,
@@ -72,7 +69,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
         type_schema: Optional[dict] = None,
         **kwargs,
     ):
-        """Generate a ProfileReport based on a pandas or spark.sql DataFrame
+        """Generate a ProfileReport.
 
         Config processing order (in case of duplicate entries, entries later in the order are retained):
         - config presets (e.g. `config_file`, `minimal` arguments)
@@ -81,7 +78,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
         - custom settings **kwargs (e.g. `title`)
 
         Args:
-            df: a pandas or spark.sql DataFrame
+            df: a pandas DataFrame or ibis Table
             minimal: minimal mode is a default configuration with minimal computation
             ts_mode: activates time-series analysis for all the numerical variables from the dataset.
             Only available for pd.DataFrame
@@ -95,6 +92,8 @@ class ProfileReport(SerializeReport, ExpectationsReport):
             type_schema: optional dict containing pairs of `column name`: `type`
             **kwargs: other arguments, for valid arguments, check the default configuration file.
         """
+        if isinstance(df, pd.DataFrame):
+            df = ibis.memtable(df)
 
         self.__validate_inputs(df, minimal, tsmode, config_file, lazy)
 
@@ -112,8 +111,6 @@ class ProfileReport(SerializeReport, ExpectationsReport):
                 report_config = Settings()
             elif isinstance(df, ibisDataFrame):
                 report_config = IbisSettings()
-            elif isinstance(df, sparkDataFrame):
-                report_config = SparkSettings()
             else:
                 raise NotImplementedError(f"Unsupported dataframe type: {type(df)}")
 
@@ -156,7 +153,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
 
     @staticmethod
     def __validate_inputs(
-        df: Optional[Union[pd.DataFrame, sparkDataFrame, ibisDataFrame]],
+        df: Optional[Union[pd.DataFrame, ibisDataFrame]],
         minimal: bool,
         tsmode: bool,
         config_file: Optional[Union[Path, str]],
@@ -174,18 +171,6 @@ class ProfileReport(SerializeReport, ExpectationsReport):
         if isinstance(df, pd.DataFrame):
             if df is not None and df.empty:
                 raise ValueError(
-                    "DataFrame is empty. Pleaseprovide a non-empty DataFrame."
-                )
-        elif isinstance(df, sparkDataFrame):
-            if tsmode:
-                raise NotImplementedError(
-                    "Time-Series dataset analysis is not yet supported for Spark DataFrames"
-                )
-
-            if (
-                df is not None and df.rdd.isEmpty()  # type: ignore
-            ):  # df.isEmpty is only support by 3.3.0 pyspark version
-                raise ValueError(
                     "DataFrame is empty. Please provide a non-empty DataFrame."
                 )
         elif isinstance(df, ibisDataFrame):
@@ -201,9 +186,9 @@ class ProfileReport(SerializeReport, ExpectationsReport):
 
     @staticmethod
     def __initialize_dataframe(
-        df: Optional[Union[pd.DataFrame, sparkDataFrame, ibisDataFrame]],
+        df: Optional[Union[pd.DataFrame, ibisDataFrame]],
         report_config: Settings,
-    ) -> Optional[Union[pd.DataFrame, sparkDataFrame, ibisDataFrame]]:
+    ) -> Optional[Union[pd.DataFrame, ibisDataFrame]]:
 
         logger.info_def_report(
             df=df,
@@ -261,16 +246,12 @@ class ProfileReport(SerializeReport, ExpectationsReport):
     @property
     def summarizer(self) -> BaseSummarizer:
         if self._summarizer is None:
-            use_spark = False
-            if self._df_type is sparkDataFrame:
-                use_spark = True
-
             use_ibis = False
             if self._df_type is ibisDataFrame:
                 use_ibis = True
 
             self._summarizer = ProfilingSummarizer(
-                self.typeset, use_spark=use_spark, use_ibis=use_ibis
+                self.typeset, use_spark=False, use_ibis=use_ibis
             )
         return self._summarizer
 
@@ -369,7 +350,7 @@ class ProfileReport(SerializeReport, ExpectationsReport):
         """
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
-            pillow_version = pkg_resources.get_distribution("Pillow").version
+            pillow_version = version("Pillow")
         version_tuple = tuple(map(int, pillow_version.split(".")))
         if version_tuple < (9, 5, 0):
             warnings.warn(
