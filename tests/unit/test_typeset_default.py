@@ -14,10 +14,10 @@ from visions.test.utils import (
     infers,
 )
 
+from profunda.config import Settings
+from profunda.model.typeset import ProfilingTypeSet
+from profunda.profile_report import ProfileReport
 from tests.unit.test_utils import patch_arg
-from ydata_profiling.config import Settings
-from ydata_profiling.model.typeset import ProfilingTypeSet
-from ydata_profiling.profile_report import ProfileReport
 
 
 def get_sequences() -> Dict[str, Sequence]:

@@ -5,12 +5,12 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.describe import describe
-from ydata_profiling.model.summary import describe_1d
-from ydata_profiling.model.typeset import ProfilingTypeSet
+from profunda.config import Settings
+from profunda.model.describe import describe
+from profunda.model.summary import describe_1d
+from profunda.model.typeset import ProfilingTypeSet
 
-check_is_NaN = "ydata_profiling.check_is_NaN"
+check_is_NaN = "profunda.check_is_NaN"
 
 
 testdata = [
@@ -51,15 +51,15 @@ def test_describe_unique(data, expected, summarizer, typeset):
 
     desc_1d = describe_1d(config, data, summarizer, typeset)
     if expected["is_unique"] is not None:
-        assert (
-            desc_1d["p_unique"] == expected["p_unique"]
-        ), "Describe 1D p_unique incorrect"
-        assert (
-            desc_1d["p_distinct"] == expected["p_distinct"]
-        ), "Describe 1D p_distinct incorrect"
-        assert (
-            desc_1d["is_unique"] == expected["is_unique"]
-        ), "Describe 1D should return unique"
+        assert desc_1d["p_unique"] == expected["p_unique"], (
+            "Describe 1D p_unique incorrect"
+        )
+        assert desc_1d["p_distinct"] == expected["p_distinct"], (
+            "Describe 1D p_distinct incorrect"
+        )
+        assert desc_1d["is_unique"] == expected["is_unique"], (
+            "Describe 1D should return unique"
+        )
 
 
 @pytest.fixture
@@ -567,14 +567,14 @@ def test_describe_df(column, describe_data, expected_results, summarizer):
         else:
             test_condition = v == results.variables[column][k]
 
-        assert (
-            test_condition
-        ), f"Value `{results.variables[column][k]}` for key `{k}` in column `{column}` is not NaN"
+        assert test_condition, (
+            f"Value `{results.variables[column][k]}` for key `{k}` in column `{column}` is not NaN"
+        )
 
     if results.variables[column]["type"] in ["Numeric", "DateTime"]:
-        assert (
-            "histogram" in results.variables[column]
-        ), f"Histogram missing for column {column}"
+        assert "histogram" in results.variables[column], (
+            f"Histogram missing for column {column}"
+        )
 
 
 def test_describe_list(summarizer, typeset):

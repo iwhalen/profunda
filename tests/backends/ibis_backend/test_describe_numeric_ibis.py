@@ -6,19 +6,15 @@ import pandas as pd
 import pytest
 from pytest import approx
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.describe_counts_ibis import describe_counts_ibis
-from ydata_profiling.model.ibis.describe_generic_ibis import describe_generic_ibis
-from ydata_profiling.model.ibis.describe_numeric_ibis import describe_numeric_1d_ibis
-from ydata_profiling.model.ibis.describe_supported_ibis import describe_supported_ibis
-from ydata_profiling.model.pandas.describe_counts_pandas import pandas_describe_counts
-from ydata_profiling.model.pandas.describe_generic_pandas import pandas_describe_generic
-from ydata_profiling.model.pandas.describe_numeric_pandas import (
-    pandas_describe_numeric_1d,
-)
-from ydata_profiling.model.pandas.describe_supported_pandas import (
-    pandas_describe_supported,
-)
+from profunda.config import Settings
+from profunda.model.ibis.describe_counts_ibis import describe_counts_ibis
+from profunda.model.ibis.describe_generic_ibis import describe_generic_ibis
+from profunda.model.ibis.describe_numeric_ibis import describe_numeric_1d_ibis
+from profunda.model.ibis.describe_supported_ibis import describe_supported_ibis
+from profunda.model.pandas.describe_counts_pandas import pandas_describe_counts
+from profunda.model.pandas.describe_generic_pandas import pandas_describe_generic
+from profunda.model.pandas.describe_numeric_pandas import pandas_describe_numeric_1d
+from profunda.model.pandas.describe_supported_pandas import pandas_describe_supported
 
 test_data = [
     (
@@ -131,14 +127,14 @@ def test_describe_numeric_ibis(series, test_id):
 
     for key in keys:
         if np.isnan(summary_pandas[key]):
-            assert np.isnan(
-                summary_ibis[key]
-            ), f'Key "{key}" is nan in pandas but not in ibis, got {summary_ibis[key]}'
+            assert np.isnan(summary_ibis[key]), (
+                f'Key "{key}" is nan in pandas but not in ibis, got {summary_ibis[key]}'
+            )
 
         else:
-            assert summary_ibis[key] == approx(
-                summary_pandas[key]
-            ), f'Key "{key}" not approximately equal'
+            assert summary_ibis[key] == approx(summary_pandas[key]), (
+                f'Key "{key}" not approximately equal'
+            )
 
     assert summary_ibis["monotonic"] == 0
 

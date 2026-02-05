@@ -1,9 +1,6 @@
 import pandas as pd
 
-from ydata_profiling.model.pandas.discretize_pandas import (
-    DiscretizationType,
-    Discretizer,
-)
+from profunda.model.pandas.discretize_pandas import DiscretizationType, Discretizer
 
 
 def test_discretize_quantile():

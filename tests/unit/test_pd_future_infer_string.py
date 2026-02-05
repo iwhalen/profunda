@@ -1,8 +1,8 @@
 import pandas as pd
 import pytest
 
-from ydata_profiling import ProfileReport
-from ydata_profiling.utils.compat import pandas_version_info
+from profunda import ProfileReport
+from profunda.utils.compat import pandas_version_info
 
 
 @pytest.fixture()

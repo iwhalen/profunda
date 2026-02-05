@@ -4,7 +4,7 @@ from unittest.mock import Mock
 import pandas as pd
 import pytest
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 @pytest.fixture

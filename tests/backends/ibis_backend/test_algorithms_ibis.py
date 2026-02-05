@@ -3,8 +3,8 @@ import numpy as np
 import pytest
 from scipy.stats import entropy as scipy_entropy
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.algorithms_ibis import entropy, histogram_compute
+from profunda.config import Settings
+from profunda.model.ibis.algorithms_ibis import entropy, histogram_compute
 
 test_data = [
     (

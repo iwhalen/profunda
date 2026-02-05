@@ -2,10 +2,11 @@
 Test for issue 51:
 https://github.com/ydataai/ydata-profiling/issues/51
 """
+
 import numpy as np
 import pandas as pd
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 def test_issue51(get_data_file):
@@ -20,9 +21,9 @@ def test_issue51(get_data_file):
     report = ProfileReport(
         df, title="YData Profiling Report", progress_bar=False, explorative=True
     )
-    assert (
-        "<title>YData Profiling Report</title>" in report.to_html()
-    ), "Profile report should be generated."
+    assert "<title>YData Profiling Report</title>" in report.to_html(), (
+        "Profile report should be generated."
+    )
 
 
 def test_issue51_similar():
@@ -40,9 +41,9 @@ def test_issue51_similar():
     report.config.vars.num.low_categorical_threshold = 0
     # FIXME: assert correlation values (report.description_set["correlations"])
 
-    assert (
-        "<title>YData Profiling Report</title>" in report.to_html()
-    ), "Profile report should be generated."
+    assert "<title>YData Profiling Report</title>" in report.to_html(), (
+        "Profile report should be generated."
+    )
 
 
 def test_issue51_empty():

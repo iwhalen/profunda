@@ -6,14 +6,14 @@ import ibis
 import pytest
 import tqdm
 
-from ydata_profiling.config import IbisSettings
-from ydata_profiling.model.ibis.summary_ibis import (
+from profunda.config import IbisSettings
+from profunda.model.ibis.summary_ibis import (
     _get_type,
     get_series_descriptions_ibis,
     ibis_describe_1d,
 )
-from ydata_profiling.model.summarizer import ProfilingSummarizer
-from ydata_profiling.model.typeset import ProfilingTypeSet
+from profunda.model.summarizer import ProfilingSummarizer
+from profunda.model.typeset import ProfilingTypeSet
 
 
 @pytest.fixture
