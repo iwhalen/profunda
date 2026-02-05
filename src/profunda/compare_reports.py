@@ -283,7 +283,8 @@ def compare(
         all_configs = [r.config for r in reports]  # type: ignore
     else:
         configs_str = [
-            json.loads(r.package["profunda_config"]) for r in reports  # type: ignore
+            json.loads(r.package["profunda_config"])
+            for r in reports  # type: ignore
         ]
         all_configs = []
         for c_str in configs_str:
@@ -306,7 +307,9 @@ def compare(
         non_empty_reports = 0
         for report in reports[1:]:
             cols_2_compare = [
-                col for col in base_features if col in list(report.variables.keys())  # type: ignore
+                col
+                for col in base_features
+                if col in list(report.variables.keys())  # type: ignore
             ]
             if len(cols_2_compare) > 0:
                 non_empty_reports += 1

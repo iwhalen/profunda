@@ -44,9 +44,7 @@ def pandas_describe_1d(
         series = series.fillna(np.nan).infer_objects(copy=False)
 
     has_cast_type = _is_cast_type_defined(typeset, series.name)  # type:ignore
-    cast_type = (
-        str(typeset.type_schema[series.name]) if has_cast_type else None
-    )  # type:ignore
+    cast_type = str(typeset.type_schema[series.name]) if has_cast_type else None  # type:ignore
 
     if has_cast_type and not series.isna().all():
         vtype = typeset.type_schema[series.name]  # type:ignore

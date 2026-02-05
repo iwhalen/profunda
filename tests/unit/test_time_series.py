@@ -51,23 +51,23 @@ def sample_ts_df():
 def test_timeseries_identification(html_profile: str):
 
     assert "<th>TimeSeries<td" in html_profile, "TimeSeries not detected"
-    assert (
-        'TimeSeries<td style="white-space: nowrap;">8' in html_profile
-    ), "TimeSeries incorrectly identified"
+    assert 'TimeSeries<td style="white-space: nowrap;">8' in html_profile, (
+        "TimeSeries incorrectly identified"
+    )
 
 
 def test_timeseries_autocorrelation_tab(html_profile: str):
     assert ">Autocorrelation<" in html_profile, "TimeSeries not detected"
-    assert (
-        html_profile.count(">Autocorrelation<") == 8
-    ), "TimeSeries autocorrelation tabs incorrectly generated"
+    assert html_profile.count(">Autocorrelation<") == 8, (
+        "TimeSeries autocorrelation tabs incorrectly generated"
+    )
 
 
 def test_timeseries_seasonality(html_profile: str):
     assert ">Seasonal<" in html_profile, "Seasonality incorrectly identified"
-    assert (
-        html_profile.count(">Seasonal<") == 4
-    ), "Seasonality warning incorrectly identified"
+    assert html_profile.count(">Seasonal<") == 4, (
+        "Seasonality warning incorrectly identified"
+    )
 
 
 def test_timeseries_with_sortby(sample_ts_df):

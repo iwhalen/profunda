@@ -27,7 +27,7 @@ def fmt_percent(value: float, edge_cases: bool = True) -> str:
     if edge_cases and round(value, 3) == 1 and value < 1:
         return "> 99.9%"
 
-    return f"{value*100:2.1f}%"
+    return f"{value * 100:2.1f}%"
 
 
 @unique

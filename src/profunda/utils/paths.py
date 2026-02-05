@@ -1,4 +1,5 @@
 """Paths that are useful throughout the project."""
+
 from pathlib import Path
 
 

@@ -25,6 +25,6 @@ class WidgetTable(Table):
     def render(self) -> VBox:
         items = [get_table(self.content["rows"])]
         if self.content["caption"] is not None:
-            items.append(widgets.HTML(f'<em>{self.content["caption"]}</em>'))
+            items.append(widgets.HTML(f"<em>{self.content['caption']}</em>"))
 
         return VBox(items)

@@ -69,12 +69,12 @@ def get_batch_grid(
         if subtitles:
             out.append(
                 widgets.VBox(
-                    [widgets.HTML(f"<h5><em>{ item.name }</em></h5>"), item.render()]
+                    [widgets.HTML(f"<h5><em>{item.name}</em></h5>"), item.render()]
                 )
             )
         elif titles:
             out.append(
-                widgets.VBox([widgets.HTML(f"<h4>{ item.name }</h4>"), item.render()])
+                widgets.VBox([widgets.HTML(f"<h4>{item.name}</h4>"), item.render()])
             )
         else:
             out.append(item.render())

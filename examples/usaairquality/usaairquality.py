@@ -1,6 +1,7 @@
 """
-    Time-series profiling example for USA AirQuality dataset
+Time-series profiling example for USA AirQuality dataset
 """
+
 import pandas as pd
 
 from ydata_profiling import ProfileReport
@@ -8,7 +9,6 @@ from ydata_profiling.utils.cache import cache_file
 from ydata_profiling.visualisation.plot import timeseries_heatmap
 
 if __name__ == "__main__":
-
     file_name = cache_file(
         "pollution_us_2000_2016.csv",
         "https://query.data.world/s/mz5ot3l4zrgvldncfgxu34nda45kvb",

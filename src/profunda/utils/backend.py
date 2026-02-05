@@ -1,5 +1,5 @@
 """
-    File with a function to check the backend being used
+File with a function to check the backend being used
 """
 
 import importlib

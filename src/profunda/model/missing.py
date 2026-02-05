@@ -137,9 +137,9 @@ def get_missing_diagram(
         result = missing_func.compute(config, df, backend)
     except ValueError as e:
         warnings.warn(
-            f"""There was an attempt to generate the {settings['name']} missing values diagrams, but this failed.
+            f"""There was an attempt to generate the {settings["name"]} missing values diagrams, but this failed.
         To hide this warning, disable the calculation
-        (using `df.profile_report(missing_diagrams={{"{settings['name']}": False}}`)
+        (using `df.profile_report(missing_diagrams={{"{settings["name"]}": False}}`)
         If this is problematic for your use case, please report this as an issue:
         https://github.com/ydataai/ydata-profiling/issues
         (include the error message: '{e}')"""

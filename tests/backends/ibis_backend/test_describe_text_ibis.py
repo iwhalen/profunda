@@ -88,11 +88,11 @@ def test_describe_text_1d_ibis(text):
 
     for key in keys:
         if np.isnan(summary_pandas[key]):
-            assert np.isnan(
-                summary_ibis[key]
-            ), f'Key "{key}" is nan in pandas but not in ibis, got {summary_ibis[key]}'
+            assert np.isnan(summary_ibis[key]), (
+                f'Key "{key}" is nan in pandas but not in ibis, got {summary_ibis[key]}'
+            )
 
         else:
-            assert summary_ibis[key] == pytest.approx(
-                summary_pandas[key]
-            ), f'Key "{key}" not approximately equal'
+            assert summary_ibis[key] == pytest.approx(summary_pandas[key]), (
+                f'Key "{key}" not approximately equal'
+            )

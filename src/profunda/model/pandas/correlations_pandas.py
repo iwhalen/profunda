@@ -179,7 +179,6 @@ def auto_compute(
         columns=columns_tested,
     )
     for col_1_name, col_2_name in itertools.combinations(columns_tested, 2):
-
         method = (
             _pairwise_spearman
             if any(elem in categorical_columns for elem in [col_1_name, col_2_name])

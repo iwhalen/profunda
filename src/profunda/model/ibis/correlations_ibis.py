@@ -33,7 +33,8 @@ def pearson_compute(
                     corr_value = (
                         numeric_table[col1]
                         # TODO: Implement with raw math operations for maximal Ibis backend compatibility.
-                        .corr(numeric_table[col2], how="pop").execute()
+                        .corr(numeric_table[col2], how="pop")
+                        .execute()
                     )
                     matrix[i, j] = corr_value
                     matrix[j, i] = corr_value

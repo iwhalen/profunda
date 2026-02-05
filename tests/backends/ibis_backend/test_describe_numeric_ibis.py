@@ -127,14 +127,14 @@ def test_describe_numeric_ibis(series, test_id):
 
     for key in keys:
         if np.isnan(summary_pandas[key]):
-            assert np.isnan(
-                summary_ibis[key]
-            ), f'Key "{key}" is nan in pandas but not in ibis, got {summary_ibis[key]}'
+            assert np.isnan(summary_ibis[key]), (
+                f'Key "{key}" is nan in pandas but not in ibis, got {summary_ibis[key]}'
+            )
 
         else:
-            assert summary_ibis[key] == approx(
-                summary_pandas[key]
-            ), f'Key "{key}" not approximately equal'
+            assert summary_ibis[key] == approx(summary_pandas[key]), (
+                f'Key "{key}" not approximately equal'
+            )
 
     assert summary_ibis["monotonic"] == 0
 
