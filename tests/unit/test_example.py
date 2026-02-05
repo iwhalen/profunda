@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 
-from ydata_profiling import ProfileReport
-from ydata_profiling.model import BaseDescription
+from profunda import ProfileReport
+from profunda.model import BaseDescription
 
 
 def test_example(get_data_file, test_output_dir):

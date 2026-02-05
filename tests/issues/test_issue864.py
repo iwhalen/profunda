@@ -4,11 +4,12 @@ https://github.com/ydataai/ydata-profiling/issues/
 
 Validate Extreme Values sub-tabs state the correct number of extreme values shown.
 """
+
 import random
 
 import pandas as pd
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 def test_issue864():

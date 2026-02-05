@@ -4,9 +4,9 @@ import ibis
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.sample_ibis import get_sample_ibis
-from ydata_profiling.model.pandas.sample_pandas import pandas_get_sample
+from profunda.config import Settings
+from profunda.model.ibis.sample_ibis import get_sample_ibis
+from profunda.model.pandas.sample_pandas import pandas_get_sample
 
 
 @pytest.fixture
@@ -45,7 +45,8 @@ def test_ibis_get_sample_warnings(data):
     config.samples.random = 1
     config.samples.tail = 1
 
-    with pytest.warns(
-        UserWarning, match="tail sample not implemented for Ibis"
-    ), pytest.warns(UserWarning, match="random sample not implemented for Ibis"):
+    with (
+        pytest.warns(UserWarning, match="tail sample not implemented for Ibis"),
+        pytest.warns(UserWarning, match="random sample not implemented for Ibis"),
+    ):
         get_sample_ibis(config, data)

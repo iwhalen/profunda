@@ -2,8 +2,8 @@ import os
 
 import pandas as pd
 
-from ydata_profiling.model.summarizer import ProfilingSummarizer, format_summary
-from ydata_profiling.model.typeset import ProfilingTypeSet
+from profunda.model.summarizer import ProfilingSummarizer, format_summary
+from profunda.model.typeset import ProfilingTypeSet
 
 base_path = os.path.abspath(os.path.dirname(__file__))
 
@@ -33,7 +33,7 @@ def test_summarizer(config):
                 [
                     os.path.abspath(
                         base_path
-                        + r"../../../src/ydata_profiling/model/typeset_does_not_exist.py"
+                        + r"../../../src/profunda/model/typeset_does_not_exist.py"
                     )
                 ]
             ),
@@ -44,11 +44,7 @@ def test_summarizer(config):
         pps.summarize(
             config,
             pd.Series(
-                [
-                    os.path.abspath(
-                        base_path + r"../../../src/ydata_profiling/model/typeset.py"
-                    )
-                ]
+                [os.path.abspath(base_path + r"../../../src/profunda/model/typeset.py")]
             ),
             "File",
         )

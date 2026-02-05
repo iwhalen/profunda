@@ -2,9 +2,9 @@ import ibis
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.describe_counts_ibis import describe_counts_ibis
-from ydata_profiling.model.pandas.describe_counts_pandas import pandas_describe_counts
+from profunda.config import Settings
+from profunda.model.ibis.describe_counts_ibis import describe_counts_ibis
+from profunda.model.pandas.describe_counts_pandas import pandas_describe_counts
 
 
 @pytest.fixture

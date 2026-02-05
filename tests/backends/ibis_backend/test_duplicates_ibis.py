@@ -4,9 +4,9 @@ import ibis
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.duplicates_ibis import get_duplicates_ibis
-from ydata_profiling.model.pandas.duplicates_pandas import pandas_get_duplicates
+from profunda.config import Settings
+from profunda.model.ibis.duplicates_ibis import get_duplicates_ibis
+from profunda.model.pandas.duplicates_pandas import pandas_get_duplicates
 
 TEST_DATA = [
     (

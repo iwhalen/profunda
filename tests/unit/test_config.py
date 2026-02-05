@@ -1,4 +1,4 @@
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 def test_set_variable():

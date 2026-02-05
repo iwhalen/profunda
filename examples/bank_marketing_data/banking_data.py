@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from ydata_profiling import ProfileReport
-from ydata_profiling.utils.cache import cache_zipped_file
+from profunda import ProfileReport
+from profunda.utils.cache import cache_zipped_file
 
 if __name__ == "__main__":
     file_name = cache_zipped_file(

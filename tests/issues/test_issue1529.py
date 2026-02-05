@@ -2,11 +2,12 @@
 Test for issue 1529:
 https://github.com/ydataai/ydata-profiling/issues/1529
 """
+
 import json
 
 import pandas as pd
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 def test_issue1529():

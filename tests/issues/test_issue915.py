@@ -3,6 +3,7 @@ Test for issue 915:
 https://github.com/ydataai/pandas-profiling/issues/915
 Error for series with large integers.
 """
+
 import pandas as pd
 
 from pandas_profiling import ProfileReport

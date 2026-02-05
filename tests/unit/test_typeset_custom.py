@@ -12,9 +12,9 @@ from visions.test.utils import (
     infers,
 )
 
+from profunda.config import Settings
+from profunda.model.typeset import ProfilingTypeSet
 from tests.unit.test_utils import patch_arg
-from ydata_profiling.config import Settings
-from ydata_profiling.model.typeset import ProfilingTypeSet
 
 
 def get_profiling_series():

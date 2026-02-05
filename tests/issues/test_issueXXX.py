@@ -2,10 +2,11 @@
 Test for issue XXX:
 https://github.com/ydataai/ydata-profiling/issues/XXX
 """
+
 import pandas as pd
 import pytest
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 @pytest.mark.skip()

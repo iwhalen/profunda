@@ -4,9 +4,9 @@ import ibis
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.describe_generic_ibis import describe_generic_ibis
-from ydata_profiling.model.pandas.describe_generic_pandas import pandas_describe_generic
+from profunda.config import Settings
+from profunda.model.ibis.describe_generic_ibis import describe_generic_ibis
+from profunda.model.pandas.describe_generic_pandas import pandas_describe_generic
 
 
 @pytest.fixture

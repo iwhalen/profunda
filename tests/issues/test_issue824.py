@@ -10,11 +10,12 @@ The alert is probably generated for each active correlation calculation
 Solution :
 Field will be marked once is labelled as highly correlated for any calculation
 """
+
 import pandas as pd
 import pytest
 
-from ydata_profiling import ProfileReport
-from ydata_profiling.model.alerts import AlertType
+from profunda import ProfileReport
+from profunda.model.alerts import AlertType
 
 
 @pytest.mark.skip()

@@ -2,9 +2,10 @@
 Test for issue 215:
 https://github.com/ydataai/ydata-profiling/issues/215
 """
+
 import pytest
 
-from ydata_profiling.report.formatters import fmt_percent
+from profunda.report.formatters import fmt_percent
 
 
 @pytest.mark.parametrize(

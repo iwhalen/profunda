@@ -2,7 +2,7 @@ import unittest
 
 import pandas as pd
 
-from ydata_profiling.utils.compat import optional_option_context, pandas_version_info
+from profunda.utils.compat import optional_option_context, pandas_version_info
 
 
 class TestCompatUtils(unittest.TestCase):

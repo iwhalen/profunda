@@ -2,9 +2,10 @@
 Test for issue 243:
 https://github.com/ydataai/ydata-profiling/issues/243
 """
+
 import pandas as pd
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 
 def test_issue243():

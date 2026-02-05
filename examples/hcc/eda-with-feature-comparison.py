@@ -1,13 +1,13 @@
 """
-    Comparison report example for HCC dataset
+Comparison report example for HCC dataset
 """
+
 import pandas as pd
 from sklearn.impute import SimpleImputer
 
-from ydata_profiling import ProfileReport
+from profunda import ProfileReport
 
 if __name__ == "__main__":
-
     # Load the dataset
     df = pd.read_csv("hcc.csv")
 
