@@ -6,11 +6,11 @@ import ibis
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.describe_counts_ibis import describe_counts_ibis
-from ydata_profiling.model.ibis.describe_date_ibis import describe_date_1d_ibis
-from ydata_profiling.model.ibis.describe_generic_ibis import describe_generic_ibis
-from ydata_profiling.model.ibis.describe_supported_ibis import describe_supported_ibis
+from profunda.config import Settings
+from profunda.model.ibis.describe_counts_ibis import describe_counts_ibis
+from profunda.model.ibis.describe_date_ibis import describe_date_1d_ibis
+from profunda.model.ibis.describe_generic_ibis import describe_generic_ibis
+from profunda.model.ibis.describe_supported_ibis import describe_supported_ibis
 
 test_data = [
     (

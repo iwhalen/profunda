@@ -1,6 +1,6 @@
 import pytest
 
-from ydata_profiling.utils.dataframe import sort_column_names
+from profunda.utils.dataframe import sort_column_names
 
 
 @pytest.fixture()

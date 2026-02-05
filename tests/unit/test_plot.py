@@ -4,7 +4,7 @@ import pytest
 from matplotlib.legend import Legend
 from matplotlib.pyplot import Axes, close, rcParams
 
-from ydata_profiling.visualisation.plot import (
+from profunda.visualisation.plot import (
     _create_timeseries_heatmap,
     _plot_pie_chart,
     _plot_stacked_barh,

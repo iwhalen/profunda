@@ -5,12 +5,12 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.describe import describe
-from ydata_profiling.model.summary import describe_1d
-from ydata_profiling.model.typeset import ProfilingTypeSet
+from profunda.config import Settings
+from profunda.model.describe import describe
+from profunda.model.summary import describe_1d
+from profunda.model.typeset import ProfilingTypeSet
 
-check_is_NaN = "ydata_profiling.check_is_NaN"
+check_is_NaN = "profunda.check_is_NaN"
 
 
 testdata = [

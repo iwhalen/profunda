@@ -5,11 +5,12 @@ https://github.com/ydataai/ydata-profiling/issues/94
 Test based on:
 https://stackoverflow.com/questions/52926527/pandas-profiling-1-4-1-throws-zerodivisionerror-for-valid-data-set-which-pandas
 """
+
 from pathlib import Path
 
 import pandas as pd
 
-import ydata_profiling
+import profunda
 
 
 def test_issue94(tmpdir):
@@ -28,5 +29,5 @@ CHEM
 CHEM"""
     )
     df = pd.read_csv(str(file_path), parse_dates=True)
-    profile = ydata_profiling.ProfileReport(df, title="YData Profiling Report")
+    profile = profunda.ProfileReport(df, title="YData Profiling Report")
     assert "<title>YData Profiling Report</title>" in profile.to_html()

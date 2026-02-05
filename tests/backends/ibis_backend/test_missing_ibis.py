@@ -4,8 +4,8 @@ import ibis
 import numpy as np
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.missing_ibis import missing_bar, missing_heatmap
+from profunda.config import Settings
+from profunda.model.ibis.missing_ibis import missing_bar, missing_heatmap
 
 
 @pytest.fixture

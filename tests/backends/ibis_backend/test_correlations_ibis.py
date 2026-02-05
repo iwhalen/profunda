@@ -2,23 +2,21 @@ import ibis
 import pandas as pd
 import pytest
 
-from ydata_profiling.config import Settings
-from ydata_profiling.model.ibis.correlations_ibis import (
+from profunda.config import Settings
+from profunda.model.ibis.correlations_ibis import (
     cramers_compute as ibis_cramers_compute,
 )
-from ydata_profiling.model.ibis.correlations_ibis import (
+from profunda.model.ibis.correlations_ibis import (
     kendall_compute as ibis_kendall_compute,
 )
-from ydata_profiling.model.ibis.correlations_ibis import (
+from profunda.model.ibis.correlations_ibis import (
     pearson_compute as ibis_pearson_compute,
 )
-from ydata_profiling.model.ibis.correlations_ibis import (
-    phi_k_compute as ibis_phi_k_compute,
-)
-from ydata_profiling.model.ibis.correlations_ibis import (
+from profunda.model.ibis.correlations_ibis import phi_k_compute as ibis_phi_k_compute
+from profunda.model.ibis.correlations_ibis import (
     spearman_compute as ibis_spearman_compute,
 )
-from ydata_profiling.model.pandas.correlations_pandas import (
+from profunda.model.pandas.correlations_pandas import (
     pearson_compute as pandas_pearson_compute,
 )
 
